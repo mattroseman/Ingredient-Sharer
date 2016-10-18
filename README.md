@@ -17,6 +17,7 @@ go into the folder and run rails server.
 
 ```
 $ cd Ingredient-Sharer/
+$ bundle install
 $ rails server
 ```
 
