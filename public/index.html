@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200" rel="stylesheet">
+	<style>
+		body {
+			background-image: url('https://source.unsplash.com/category/food');
+			background-size: cover;
+			min-height: 100vh;
+			justify-content: center;
+			align-items: center;
+			flex-direction: column;
+			display: -webkit-flex;
+			-webkit-flex-direction: column;
+		}
+		h1 {
+			background-color: rgba(255, 255, 255, 0.7);
+			padding:0.5rem;
+			color: #181818;
+			font-family: 'Source Sans Pro', sans-serif;
+			font-style: bold;
+		}
+		h2 {
+			background-color: rgba(255, 255, 255, 0.7);
+			padding: 0.55rem;
+			color: #181818;
+			font-family: 'Source Sans Pro', sans-serif;
+		}
+		#login-container {
+			display: block;
+			background-color: rgba(255, 255, 255, 0.7);
+			padding: 1rem;
+			font-family: 'Source Sans Pro', sans-serif;
+		}
+		div th, div td {
+			padding: 5px;
+			text-align: left;
+			border-collapse: collapse;
+		}
+	</style>
+	</head>
+	<body>
+		<h1>Ingredient Sharer</h1>
+		<h2>A new way to connect with your neighbors via leftover groceries and spare ingredients.</h2>
+		<div id="login-container">
+			<table border="0" padding="0">
+			<caption align="top" style="font-size: 130%;">Log in or Sign up</caption>
+				<tr>
+					<th>Username:</th>
+					<th><input type="text" name="username"></th>
+					<th rowspan="2"><input method="post" value="Log in" type="submit" action="login.php"></form></th>
+				</tr>
+				<tr>
+					<th>Password:</th>
+					<th><input type="password" name="password"></th>
+				</tr>
+			</table>
+			
+		</div>
+	</body>
+
+</html>
