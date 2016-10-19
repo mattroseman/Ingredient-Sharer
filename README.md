@@ -24,4 +24,4 @@ go to http://localhost:3000/
 
 ## Issues
 
-- MySQL issue
+1. MySQL issue: You must [configure MySQL password in the `config/database.yml` file](https://github.com/hunj/Ingredient-Sharer/blob/master/config/database.yml#L17) (if there is any error). Put MySQL root account's password for `password` (Will have to see if we can use an account that is not root).
