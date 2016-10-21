@@ -4,7 +4,6 @@
 
 Post should contain:
 
-- `user_id: Integer` The user_id of the current user (the OP). Value should be automatically set by the server
 - `title: String` The title of this post. Empty textbox.
 - `location: String` The location where the user wants to request or offer. Autofilled from User's profile but can be changed.
 - `content: text` The content of the post. Empty textbox.
