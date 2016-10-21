@@ -15,6 +15,7 @@ Rails.application.routes.draw do
       root :to => 'devise/sessions#new', as: :unauthenticated_root
     end
   end
+  match 'users/:id' => 'users#show', as: :user
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
