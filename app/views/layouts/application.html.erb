@@ -6,72 +6,16 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200" rel="stylesheet">
-  <style>
-    body {
-      background-image: url('https://source.unsplash.com/category/food');
-      background-size: cover;
-      min-height: 100vh;
-      align-items: center;
-      flex-direction: column;
-      display: -webkit-flex;
-      -webkit-flex-direction: column;
-      margin: 0px
-    }
-
-    h1 {
-      background-color: rgba(255, 255, 255, 0.7);
-      padding: 0.5rem;
-      color: #181818;
-      font-family: 'Source Sans Pro', sans-serif;
-      font-style: bold;
-    }
-
-    h2 {
-      background-color: rgba(255, 255, 255, 0.7);
-      padding: 0.55rem;
-      color: #181818;
-      font-family: 'Source Sans Pro', sans-serif;
-    }
-
-    div {
-      min-width: 800px;
-      display: block;
-      background-color: rgba(255, 255, 255, 0.7);
-      padding: 1rem;
-      font-family: 'Source Sans Pro', sans-serif;
-      align-items: center;
-    }
-
-    div th, div td {
-      padding: 5px;
-      text-align: left;
-      border-collapse: collapse;
-    }
-
-    div#header {
-      text-align: right;
-      padding: 5px;
-      background-color: rgba(255, 255, 255, 0.8);
-      height: 30px;
-      border: 1px solid #CCC;
-      width: 100%;
-      margin: 0px auto;
-    }
-
-    a, a hover {
-      text-color: rgba(0, 127, 255, 1.0);
-      text-decoration: none;
-    }
-
-
-  </style>
+  <%= stylesheet_link_tag 'hunjstyle' %>
 </head>
 <body>
-<h1>Ingredient Sharer</h1>
-<h2>A new way to connect with your neighbors via leftover groceries and spare ingredients.</h2>
-<%= yield %>
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
 
+<% if user_signed_in? %>
+    <div id="header">Logged in as <%= link_to @user, current_user %> | Sign out</div>
+<% end %>
+
+<%= yield %>
+<p class="alert"><%= alert %></p>
+<p class="notice"><%= notice %></p>
 </body>
 </html>
