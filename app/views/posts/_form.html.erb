@@ -15,13 +15,11 @@
     <%= f.label :title %><br>
     <%= f.text_field :title, style: 'width: 100%; display: block' %><br>
     <%= f.label :content %><br>
-    <%= f.text_area :content, style: 'width: 100%; display: block' %><Br>
+    <%= f.text_area :content, style: 'width: 100%; min-height: 300px; display: block' %><Br>
     <%= f.label :location %><br>
     <%= f.text_field :location, style: 'width: 100%; display: block' %><br>
-    <%= f.label :posted_time %><br>
-    <%= f.datetime_select :posted_time, style: 'width: 100%; display: block' %><br>
-    <%= f.label :ttl %><br>
-    <%= f.number_field :ttl, style: 'width: 100%; display: block' %><br>
+    Time-to-live (in hours) of this post<br>
+    <%= f.number_field :ttl, style: 'width: 50px; display: block' %><br>
     <%= f.submit %>
   </div>
 <% end %>
