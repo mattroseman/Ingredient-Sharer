@@ -5,6 +5,11 @@ Software Interfaces:
 google maps distance matrix api
 - https://developers.google.com/maps/documentation/distance-matrix/intro
 
+# Requirements
+
+- Ruby (2.3.0)
+- Node.js
+
 # How to run
 
 1. clone this repository.
