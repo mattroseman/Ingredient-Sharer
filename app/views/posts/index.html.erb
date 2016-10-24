@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<div class="post_fields">
+<table width="100%">
+  <caption align="top" style="font-size: 200%; font-style: bold;">Listing Posts</caption>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Title</th>
+      <th>Location</th>
+      <th>Posted time</th>
+      <th>Delete at</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @posts.each do |post| %>
+      <tr>
+        <td><!-- Type --></td>
+        <td><%= link_to post.title, post %></td>
+        <td><%= post.location %></td>
+        <td><%= post.posted_time %></td>
+        <td> <%= (post.posted_time + post.ttl.hours).to_time %></td>
+        <td></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<p align="right"><%= link_to 'New Post', new_post_path %></p>

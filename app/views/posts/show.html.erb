@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+<div id="post_title"><%= @post.title %></div>
+<div id="post_fields">
+  <%= @post.content %>
+  <br>
+  <p>
+  <strong>Location:</strong>
+  <%= @post.location %><br>
+  <strong>Posted time:</strong>
+  <%= @post.posted_time.to_time %><br>
+  <strong>Delete at:</strong>
+  <%= (@post.posted_time + @post.ttl.hours).to_time %><br>
+  </p>
+
+  <p align="right">
+    <%= link_to 'Edit', edit_post_path(@post) %> |
+    <%= link_to 'Back', posts_path %>
+  </p>
+
+</div>
