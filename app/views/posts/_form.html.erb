@@ -13,13 +13,13 @@
 
   <div id="post_fields">
     <%= f.label :title %><br>
-    <%= f.text_field :title, style: 'width: 100%; display: block' %><br>
+    <%= f.text_field :title, style: 'width: 100%; display: block', required: true %><br>
     <%= f.label :content %><br>
-    <%= f.text_area :content, style: 'width: 100%; min-height: 300px; display: block' %><Br>
+    <%= f.text_area :content, style: 'width: 100%; min-height: 300px; display: block', required: true %><Br>
     <%= f.label :location %><br>
-    <%= f.text_field :location, style: 'width: 100%; display: block' %><br>
+    <%= f.text_field :location, style: 'width: 100%; display: block', required: true %><br>
     Time-to-live (in hours) of this post<br>
-    <%= f.number_field :ttl, style: 'width: 50px; display: block' %><br>
+    <%= f.number_field :ttl, style: 'width: 50px; display: block', required: true %><br>
     <%= f.submit %>
   </div>
 <% end %>
