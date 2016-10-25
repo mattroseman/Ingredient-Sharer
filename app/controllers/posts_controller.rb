@@ -4,7 +4,9 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.all
+    # Show posts that are only alive
+    # @posts = Post.all
+    @posts = Post.where('created_at - :now >= 0', now: Time.now)
   end
 
   # GET /posts/1
