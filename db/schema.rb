@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 20161025180908) do
     t.integer  "ttl",         limit: 4
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
-    t.boolean  "is_request"
+    t.boolean  "is_request",                null: false
   end
 
   create_table "users", force: :cascade do |t|
