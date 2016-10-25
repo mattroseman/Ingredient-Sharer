@@ -6,7 +6,7 @@ class PostsController < ApplicationController
   def index
     # Show posts that are only alive
     # @posts = Post.all
-    @posts = Post.where(['(created_at + ttl) > ?', Time.current])
+    @posts = Post.where('(created_at + ttl) > ?', Time.now)
   end
 
   # GET /posts/1

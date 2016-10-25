@@ -20,10 +20,10 @@ class ApplicationController < ActionController::Base
   end
 
   # sets the time zone for user
-  around_filter :set_time_zone
+  around_action :set_time_zone, if: :current_user
 
   def set_time_zone(&block)
-    time_zone = current_user.try(:time_zone) || 'UTC'
+    time_zone = current_user.time_zone || 'EST'
     Time.use_zone(time_zone, &block)
   end
 
