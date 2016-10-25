@@ -9,6 +9,7 @@ google maps distance matrix api
 
 - Ruby (2.3.0)
 - Node.js
+- MySQL
 
 # How to run
 
