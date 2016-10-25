@@ -13,9 +13,12 @@
 <% if user_signed_in? %>
     <div id="header">Logged in as <%= link_to @user, current_user %> | Sign out</div>
 <% end %>
-
+<% if !alert.nil? %>
+    <div id="notice"><%= alert %></div>
+<% end %>
+<% if !notice.nil? %>
+    <div id="notice"><%= notice %></div>
+<% end %>
 <%= yield %>
-<p class="alert"><%= alert %></p>
-<p class="notice"><%= notice %></p>
 </body>
 </html>
