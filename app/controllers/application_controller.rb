@@ -18,4 +18,13 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit :sign_up, keys: added_attrs
     devise_parameter_sanitizer.permit :account_update, keys: added_attrs
   end
+
+  # sets the time zone for user
+  around_filter :set_time_zone
+
+  def set_time_zone(&block)
+    time_zone = current_user.try(:time_zone) || 'UTC'
+    Time.use_zone(time_zone, &block)
+  end
+
 end
