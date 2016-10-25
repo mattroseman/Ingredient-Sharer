@@ -16,11 +16,11 @@
   <tbody>
     <% @posts.each do |post| %>
       <tr>
-        <td><!-- Type --></td>
+        <td><%= post.is_request ? "Request" : "Offer" %></td>
         <td><%= link_to post.title, post %></td>
         <td><%= post.location %></td>
-        <td><%= post.posted_time %></td>
-        <td> <%= (post.posted_time + post.ttl.hours).to_time %></td>
+        <td><%= post.created_at %></td>
+        <td> <%= (post.created_at + post.ttl) %></td>
         <td></td>
       </tr>
     <% end %>

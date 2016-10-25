@@ -50,6 +50,14 @@ div#header {
     font-size: 150%;
 }
 
+div#notice {
+    color: rgb(180, 0, 0);
+    font-weight: bold;
+    font-size: 175%;
+    text-align: center;
+    padding: 0.5rem;
+}
+
 a, a hover {
     text-color: rgba(0, 127, 255, 1.0);
     text-decoration: none;

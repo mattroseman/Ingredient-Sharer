@@ -9,27 +9,38 @@ google maps distance matrix api
 
 - Ruby (2.3.0)
 - Node.js
+- MySQL
 
 # How to run
 
-1. clone this repository.
+1. Clone this repository.
 
-```
-$ git clone git@github.com:mroseman95/Ingredient-Sharer.git
-```
+   ```shell
+   $ git clone git@github.com:mroseman95/Ingredient-Sharer.git
+   ```
 
-2. connect to mysql server
+2. Connect to MySQL server:
 
-go into config/database.yml and fill in appropriate mysql server connection information
+   1. Make sure MySQL is installed
 
-3. create database
+   ```shell
+   $ mysql --version
+   ```
 
-```
-bin/rake db:create
-bin/rake db:migrate RAILS_ENV=development
-```
+   2. If MySQL is not installed, follow the [guides to install MySQL](http://dev.mysql.com/doc/refman/5.7/en/installing.html)
 
-4. go into the folder and run rails server.
+3. Setup MySQL settings:
+
+   1. In `config/database.yml`, fill in appropriate MySQL server connection information
+
+4. Create database
+
+   ```shell
+   $ bin/rake db:create
+   $ bin/rake db:migrate RAILS_ENV=development
+   ```
+
+5. Go into the folder, check dependencies with Bundler and run the server.
 
 ```
 $ cd Ingredient-Sharer/
@@ -37,6 +48,7 @@ $ bundle install
 $ rails server
 ```
 
-5. go to http://localhost:3000/
+5. Go to http://localhost:3000/
 
 ## Issues
+

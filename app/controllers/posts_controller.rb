@@ -4,7 +4,9 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.all
+    # Show posts that are only alive
+    # @posts = Post.all
+    @posts = Post.where('(created_at + ttl) > ?', Time.now)
   end
 
   # GET /posts/1
@@ -69,6 +71,6 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:title, :content, :location, :posted_time, :ttl)
+      params.require(:post).permit(:title, :content, :location, :posted_time, :ttl, :is_request)
     end
 end
