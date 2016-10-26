@@ -157,3 +157,6 @@ fabric.properties
 
 # Annoying Mac .DS_Store file
 .DS_Store
+
+# rbenv
+.ruby-version
