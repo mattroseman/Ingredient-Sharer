@@ -48,3 +48,5 @@ end
 
 # devise
 gem 'devise'
+gem 'devise_security_extension'
+gem 'rails_email_validator'
