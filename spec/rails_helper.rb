@@ -55,3 +55,7 @@ RSpec.configure do |config|
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
 end
+
+# suppresses `raise_error` giving warnings about potential false positives
+# added by hunj
+RSpec::Expectations.configuration.on_potential_false_positives = :nothing
