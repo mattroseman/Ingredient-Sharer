@@ -8,5 +8,4 @@ class User < ActiveRecord::Base
   def login_changed?
     false
   end
-
 end
