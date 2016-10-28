@@ -12,4 +12,9 @@ class User < ActiveRecord::Base
       errors.add :password, "must include at least one lowercase letter, one uppercase letter, and one digit"
     end
   end
+
+  # cheap fix found at https://github.com/phatworx/devise_security_extension/issues/54
+  def login_changed?
+    false
+  end
 end
