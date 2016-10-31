@@ -57,7 +57,7 @@ $ rails server
 
 `rspec` is a unit testing gem for Ruby. It should be automatically installed upon running `bundle install`.
 
-To run specs, simply run the following:
+To run specs (unit tests), simply run the following:
 
 ```shell
 $ rspec
