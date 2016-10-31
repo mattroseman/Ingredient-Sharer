@@ -1,31 +1,33 @@
-<h2>Sign up</h2>
+<%= devise_error_messages! %>
+<div class="login-container">
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <p>
+      <h3><%= f.label :email %></h3>
+      <%= f.email_field :email, autofocus: true, required: true %>
+      </p>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
+      <p>
+      <h3><%= f.label :username %></h3>
+      <%= f.text_field :username, required: true %>
+      </p>
 
-  <div class="field">
-    <p>
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-    </p>
-    <p><%= f.label :username %><br />
-    <%= f.text_field :username %>
-    </p>
-    <p>
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-    </p>
-    <p>
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-    </p>
+      <p>
+      <h3><%= f.label :password %></h3>
+      <% if @minimum_password_length %>
+          <em>(<%= @minimum_password_length %> characters minimum, include at least one lowercase letter, one uppercase
+            letter, and one digit)</em>
+      <% end %><br/>
+      <%= f.password_field :password, autocomplete: "off", required: true %>
+      </p>
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
+      <p>
+      <h3><%= f.label :password_confirmation %></h3>
+      <%= f.password_field :password_confirmation, autocomplete: "off", required: true %>
+      </p>
 
-<%= render "devise/shared/links" %>
+      <p>
+        <%= f.submit "Sign up" %>
+      </p>
+  <% end %>
+</div>
+
