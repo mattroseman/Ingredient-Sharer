@@ -68,6 +68,12 @@ To run specs (unit tests), simply run the following:
 $ rspec
 ```
 
+To run specs and display each spec, run the following command:
+
+```shell
+$ rspec spec --format documentation
+```
+
 ## 3.2. Testing with `Capybara`
 
 TODO add contents
