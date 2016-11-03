@@ -41,4 +41,6 @@ class User < ActiveRecord::Base
     end
   end
 
+  # user-post connection
+  has_many :posts
 end
