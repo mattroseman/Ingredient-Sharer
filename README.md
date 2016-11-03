@@ -1,9 +1,12 @@
 # Ingredient-Sharer
 A web app for sharing ingredients with neighbors.
 
-Software Interfaces:
-google maps distance matrix api
-- https://developers.google.com/maps/documentation/distance-matrix/intro
+## Index
+
+1. Requirements
+2. How to run
+3. Testing with `rspec`
+4. Testing with `Capybara`
 
 # Requirements
 
@@ -48,7 +51,22 @@ $ bundle install
 $ rails server
 ```
 
-5. Go to http://localhost:3000/
+5. Go to [http://localhost:3000/](http://localhost:3000/)
+
+## Testing with `rspec`
+
+`rspec` is a unit testing gem for Ruby. It should be automatically installed upon running `bundle install`.
+
+To run specs (unit tests), simply run the following:
+
+```shell
+$ rspec
+```
+
+## Testing with `Capybara`
+
+TODO add contents
+
 
 ## Issues
 
