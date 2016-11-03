@@ -12,7 +12,7 @@
   <% end %>
 
   <div id="post_fields">
-    <%= f.check_box :is_request %> Requesting?<br>
+    <%= f.select :is_request, [['Request', true], ['Offer', false]] %><br>
     <br>
     <%= f.label :title %><br>
     <%= f.text_field :title, style: 'width: 100%; display: block', required: true %><br>
