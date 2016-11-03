@@ -26,6 +26,12 @@
       </p>
 
       <p>
+      <h3><%= f.label :location %></h3>
+      <%= f.text_field :location, required: true %>
+      <em>(You can still change your location for each post)</em>
+      </p>
+
+      <p>
         <%= f.submit "Sign up" %>
       </p>
   <% end %>

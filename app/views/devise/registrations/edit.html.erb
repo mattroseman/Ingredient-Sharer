@@ -19,6 +19,12 @@
       <% end %>
 
       <p>
+      <h3><%= f.label :location %></h3>
+      <%= f.text_field :location, required: true %>
+      <em>(You can still change your location for each post)</em>
+      </p>
+
+      <p>
       <h3><%= f.label :password %> <i>(leave blank if you don't want to change it)</i></h3>
       <%= f.password_field :password, autocomplete: "off" %>
       <% if @minimum_password_length %>
