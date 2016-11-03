@@ -4,12 +4,14 @@
   <%= @post.content %>
   <br>
   <p>
-  <strong>Location:</strong>
-  <%= @post.location %><br>
-  <strong>Posted time:</strong>
-  <%= @post.created_at %><br>
-  <strong>Delete at:</strong>
-  <%= (@post.created_at + @post.ttl) %><br>
+    <strong>Location:</strong>
+    <%= @post.location %><br>
+    <strong>Created by:</strong>
+    <%= @post.created_by %><br>
+    <strong>Posted time:</strong>
+    <%= l @post.created_at.to_time, format: :short %><br>
+    <strong>Delete at:</strong>
+    <%= l (@post.created_at + @post.ttl.hours).to_time, format: :short %><br>
   </p>
 
   <p align="right">
