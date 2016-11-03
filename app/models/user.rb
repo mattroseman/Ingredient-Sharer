@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  validates :username, :uniqueness => true, :presence => {:message => 'Username cannot be blank'}, :uniqueness => { :case_sensitive => false }
+  validates :username, :uniqueness => true, :presence => {:message => 'Username cannot be blank'}
   validates :email, :uniqueness => true, :presence => {:message => 'Email cannot be blank'}
 
   # Only allow letter, number, underscore and punctuation.
@@ -41,4 +41,6 @@ class User < ActiveRecord::Base
     end
   end
 
+  # user-post connection
+  has_many :posts
 end

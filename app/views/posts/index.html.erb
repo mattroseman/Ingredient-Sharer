@@ -8,6 +8,7 @@
       <th>Type</th>
       <th>Title</th>
       <th>Location</th>
+      <th>Created by</th>
       <th>Posted time</th>
       <th>Delete at</th>
     </tr>
@@ -16,11 +17,12 @@
   <tbody>
     <% @posts.each do |post| %>
       <tr>
-        <td><%= post.is_request ? "Request" : "Offer" %></td>
+        <td><%= post.is_request ? 'Request' : 'Offer' %></td>
         <td><%= link_to post.title, post %></td>
         <td><%= post.location %></td>
-        <td><%= post.created_at %></td>
-        <td> <%= (post.created_at + post.ttl) %></td>
+        <th><%= post.created_by %></th>
+        <td><%= l post.created_at.to_time, format: :short %></td>
+        <td> <%= l (post.created_at + post.ttl.hours).to_time, format: :short %></td>
         <td></td>
       </tr>
     <% end %>
