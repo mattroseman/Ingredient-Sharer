@@ -8,6 +8,7 @@ A web app for sharing ingredients with neighbors.
 3. Testing 
     - with `rspec`
     - with `Capybara`
+    - Code Coverage
 4. Issues/Notes
 
 # 1. Requirements
@@ -55,9 +56,9 @@ A web app for sharing ingredients with neighbors.
 
 5. Go to [http://localhost:3000/](http://localhost:3000/)
 
-# Testing
+# 3. Testing
 
-## Testing with `rspec`
+## 3.1. Testing with `rspec`
 
 `rspec` is a unit testing gem for Ruby. It should be automatically installed upon running `bundle install`.
 
@@ -67,15 +68,21 @@ To run specs (unit tests), simply run the following:
 $ rspec
 ```
 
-## Testing with `Capybara`
+To run specs and display each spec, run the following command:
+
+```shell
+$ rspec spec --format documentation
+```
+
+## 3.2. Testing with `Capybara`
 
 TODO add contents
 
-# Code coverage
+## 3.3. Code coverage
 
 Code coverage is handled using `simplecov`. Upon running `rspec`, simplecov will automatically generate coverage data in `/coverage/` folder.
 
 
-## Issues
+## 4. Issues/Notes
 
 Issues are tracked in the repository's backlog.
