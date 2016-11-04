@@ -16,6 +16,9 @@
 
   <tbody>
     <% @posts.each do |post| %>
+      <% if Time.now > (post.created_at + post.ttl.hours).to_time %>
+          <% next %>
+      <% end %>
       <tr>
         <td><%= post.is_request ? 'Request' : 'Offer' %></td>
         <td><%= link_to post.title, post %></td>
