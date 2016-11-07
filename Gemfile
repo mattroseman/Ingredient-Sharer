@@ -58,3 +58,6 @@ gem 'rails_email_validator'
 
 # simplecov for code coverage
 gem 'simplecov', :require => false, :group => :test
+
+# capybara for acceptance test
+gem 'capybara'
