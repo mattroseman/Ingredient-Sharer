@@ -1,3 +1,6 @@
+# for Capybara w/ RSpec
+require 'capybara/rspec'
+
 # for code coverage
 require 'simplecov'
 SimpleCov.start
