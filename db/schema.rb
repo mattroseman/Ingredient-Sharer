@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161103222155) do
+ActiveRecord::Schema.define(version: 20161109170949) do
 
   create_table "posts", force: :cascade do |t|
     t.string   "title",      limit: 255
@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 20161103222155) do
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
     t.boolean  "is_request"
-    t.string   "created_by", limit: 255
+    t.integer  "user_id",    limit: 4
   end
 
   create_table "users", force: :cascade do |t|
