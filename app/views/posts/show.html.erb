@@ -7,7 +7,7 @@
     <strong>Location:</strong>
     <%= @post.location %><br>
     <strong>Created by:</strong>
-    <%= @post.created_by %><br>
+    <%= User.find(@post.user_id).username %><br>
     <strong>Posted time:</strong>
     <%= l @post.created_at.to_time, format: :short %><br>
     <strong>Delete at:</strong>
