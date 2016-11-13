@@ -10,7 +10,7 @@
 <body>
 
 <% if user_signed_in? %>
-    <div id="header">Logged in as <%= link_to current_user.username, current_user %> | <%= link_to('Sign out', destroy_user_session_path, :method => :delete) %></div>
+    <div id="header">Logged in as <%= link_to current_user.username, current_user %> (<%= link_to 'edit', edit_user_registration_url %>) | <%= link_to('Sign out', destroy_user_session_path, :method => :delete) %></div>
 <% end %>
 <% if !alert.nil? %>
     <div id="notice"><%= alert %></div>
