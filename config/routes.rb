@@ -1,12 +1,20 @@
 Rails.application.routes.draw do
+  match '/users',   to: 'users#index',   via: 'get'
+  match '/users/:id',     to: 'users#show',       via: 'get'
+  match '/users/edit', to: 'users#edit', via: 'get'
+
+  devise_for :users, :path_prefix => 'd'
+  resources :users, :only =>[:show]
+
+  devise_for :admins
   resources :posts
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
 
-  devise_for :users
-  get '/users/edit', :to => 'devise/registrations#edit', :as => :user
+  # devise_for :users
+  # get '/users/edit', :to => 'devise/registrations#edit', :as => :user
 
   devise_scope :user do
     authenticated :user do
