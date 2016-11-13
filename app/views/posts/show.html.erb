@@ -14,7 +14,22 @@
     <%= l (@post.created_at + @post.ttl.hours).to_time, format: :short %><br>
   </p>
 
-  <p align="right">
+  <h5 align="center">Comments</h5>
+  <p>
+    <% @post.comments.each do |comment| %>
+          <strong><%= User.find(comment.user_id).username %></strong>: <%= comment.content %><br/>
+    <% end %>
+  </p>
+
+  <p>Add a comment:<br/>
+    <%= form_for([@post, @post.comments.build]) do |f| %>
+        <%= f.hidden_field :user_id, :value => current_user.id %>
+         <%= f.text_area :content, style: 'width: 650px' %>
+            <%= f.submit %>
+    <% end %>
+  </p>
+
+  <p align="center">
     <%= link_to 'Edit', edit_post_path(@post) %> |
     <%= link_to 'Back', posts_path %>
   </p>

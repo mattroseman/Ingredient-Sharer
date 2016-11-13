@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :comments
+  resources :comments
   match '/users',   to: 'users#index',   via: 'get'
   match '/users/:id',     to: 'users#show',       via: 'get'
   match '/users/edit', to: 'users#edit', via: 'get'
@@ -8,6 +10,12 @@ Rails.application.routes.draw do
 
   devise_for :admins
   resources :posts
+
+  #post-comment relationship
+  resources :posts do
+    resources :comments
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -54,8 +62,7 @@ Rails.application.routes.draw do
 
   # Example resource route with more complex sub-resources:
   #   resources :products do
-  #     resources :comments
-  #     resources :sales do
+  #     #     resources :sales do
   #       get 'recent', on: :collection
   #     end
   #   end
