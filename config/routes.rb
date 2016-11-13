@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   match '/users',   to: 'users#index',   via: 'get'
   match '/users/:id',     to: 'users#show',       via: 'get'
+  match '/users/edit', to: 'users#edit', via: 'get'
 
   devise_for :users, :path_prefix => 'd'
   resources :users, :only =>[:show]
