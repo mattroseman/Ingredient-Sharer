@@ -42,5 +42,8 @@ class User < ActiveRecord::Base
   end
 
   # user-post connection
-  has_many :posts
+  has_many :posts,    dependent: :destroy
+
+  # user-comment connection
+  has_many :comments, dependent: :destroy
 end
