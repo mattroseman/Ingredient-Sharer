@@ -25,7 +25,7 @@
         <td><%= post.location %></td>
         <th><%= User.find(post.user_id).username %></th>
         <td><%= l post.created_at.to_time, format: :short %></td>
-        <td> <%= l (post.created_at + post.ttl.hours).to_time, format: :short %></td>
+        <td><%= l (post.created_at + post.ttl.hours).to_time, format: :short %></td>
         <td></td>
       </tr>
     <% end %>
