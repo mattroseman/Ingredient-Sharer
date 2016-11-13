@@ -1,0 +1,7 @@
+<h1>Showing all Users</h1>
+<div class="content">
+<% @users = User.all %>
+<% @users.each do |user| %>
+    <%= user.username %> (<%= user.email %>) <br>
+<% end %>
+</div>
