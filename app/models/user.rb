@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
   validates :email, :uniqueness => true, :presence => {:message => 'Email cannot be blank'}
 
   # Only allow letter, number, underscore and punctuation.
-  validates_format_of :username, with: /^[a-zA-Z0-9_\.]*$/, :multiline => true
+  validates :username, presence: true, length: {maximum: 255}, uniqueness: { case_sensitive: false }, format: { with: /\A[a-zA-Z0-9]*\z/, message: "may only contain letters and numbers." }
 
   # check format of username to not use email address of other user
   validate :validate_username
