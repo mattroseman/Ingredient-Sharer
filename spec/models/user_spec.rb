@@ -47,7 +47,7 @@ RSpec.describe User, :type => :model do
         email: 'test@example.com',
         password: 'P@ssw0rd',
         password_confirmation: 'P@ssw0rd'
-    )
+    ).save!
 
     expect { same_email_user = User.create(
         username: 'otherguy',
@@ -83,14 +83,5 @@ RSpec.describe User, :type => :model do
         password_confirmation: 'P@ssw0rd'
     ).save!
 
-  end
-
-  it 'should be able to log in with username' do
-    user = User.create(
-        username: 'someguy',
-        email: 'some_guy@gmail.com',
-        password: 'P@ssw0rd',
-        password_confirmation: 'P@ssw0rd'
-    ).save!
   end
 end
