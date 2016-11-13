@@ -8,11 +8,16 @@
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200" rel="stylesheet">
 </head>
 <body>
-<%= render 'layouts/header' %>
-<div class="container">
-  <%= render 'layouts/messages' %>
-  <%= yield %>
-  <%= render 'layouts/footer' %>
-</div>
+
+<% if user_signed_in? %>
+    <div id="header">Logged in as <%= link_to current_user.username, current_user %> | <%= link_to('Sign out', destroy_user_session_path, :method => :delete) %></div>
+<% end %>
+<% if !alert.nil? %>
+    <div id="notice"><%= alert %></div>
+<% end %>
+<% if !notice.nil? %>
+    <div id="notice"><%= notice %></div>
+<% end %>
+<%= yield %>
 </body>
 </html>
