@@ -17,21 +17,26 @@
   <h5 align="center">Comments</h5>
   <p>
     <% @post.comments.each do |comment| %>
-          <strong><%= User.find(comment.user_id).username %></strong>: <%= comment.content %><br/>
+        <% if comment.user_id == current_user.id %>
+            <%= link_to 'x', [comment.post, comment], method: :delete, data: { confirm: 'Are you sure?' }%>
+        <% end %>
+        <strong><%= User.find(comment.user_id).username %></strong>(<%= l comment.created_at.to_time, format: :short %>): <%= comment.content %><br/>
     <% end %>
   </p>
 
   <p>Add a comment:<br/>
     <%= form_for([@post, @post.comments.build]) do |f| %>
         <%= f.hidden_field :user_id, :value => current_user.id %>
-         <%= f.text_area :content, style: 'width: 650px' %>
+         <%= f.text_area :content, style: 'width: 750px; resize: vertical' %>
             <%= f.submit %>
     <% end %>
   </p>
 
   <p align="center">
-    <%= link_to 'Edit', edit_post_path(@post) %> |
-    <%= link_to 'Back', posts_path %>
+    <% if current_user.id == @post.user_id %>
+      <%= link_to 'Edit', edit_post_path(@post) %> |
+    <% end %>
+      <%= link_to 'Back', posts_path %>
   </p>
 
 </div>
