@@ -1,13 +1,28 @@
 Rails.application.routes.draw do
+  resources :comments
+  match '/users',   to: 'users#index',   via: 'get'
+  match '/users/:id' => 'users#show', via: :get
+  match '/users/edit', to: 'users#edit', via: 'get'
+
+  devise_for :users, :path_prefix => 'd'
+  resources :users, :only =>[:show]
+
+  devise_for :admins
   resources :posts
-  resources :posts
+
+  #post-comment relationship
+  resources :posts do
+    resources :comments
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
 
-  devise_for :users
-  get '/users/:username', :to => 'devise/registrations#edit', :as => :user
+  # devise_for :users
+  # get '/users/edit', :to => 'devise/registrations#edit', :as => :user
+
   devise_scope :user do
     authenticated :user do
       root :to => 'posts#index', as: :authenticated_root
@@ -46,8 +61,7 @@ Rails.application.routes.draw do
 
   # Example resource route with more complex sub-resources:
   #   resources :products do
-  #     resources :comments
-  #     resources :sales do
+  #     #     resources :sales do
   #       get 'recent', on: :collection
   #     end
   #   end

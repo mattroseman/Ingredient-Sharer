@@ -1,17 +1,23 @@
 # Ingredient-Sharer
 A web app for sharing ingredients with neighbors.
 
-Software Interfaces:
-google maps distance matrix api
-- https://developers.google.com/maps/documentation/distance-matrix/intro
+## 0. Index
 
-# Requirements
+1. Requirements
+2. How to run
+3. Testing 
+    - with `rspec`
+    - with `Capybara`
+    - Code Coverage
+4. Issues/Notes
+
+# 1. Requirements
 
 - Ruby (2.3.0)
 - Node.js
 - MySQL
 
-# How to run
+# 2. How to run
 
 1. Clone this repository.
 
@@ -21,17 +27,17 @@ google maps distance matrix api
 
 2. Connect to MySQL server:
 
-   1. Make sure MySQL is installed
+   - Make sure MySQL is installed
 
    ```shell
    $ mysql --version
    ```
 
-   2. If MySQL is not installed, follow the [guides to install MySQL](http://dev.mysql.com/doc/refman/5.7/en/installing.html)
+   - If MySQL is not installed, follow the [guides to install MySQL](http://dev.mysql.com/doc/refman/5.7/en/installing.html)
 
 3. Setup MySQL settings:
 
-   1. In `config/database.yml`, fill in appropriate MySQL server connection information
+   - In `config/database.yml`, fill in appropriate MySQL server connection information
 
 4. Create database
 
@@ -42,13 +48,41 @@ google maps distance matrix api
 
 5. Go into the folder, check dependencies with Bundler and run the server.
 
+   ```
+   $ cd Ingredient-Sharer/
+   $ bundle install
+   $ rails server
+   ```
+
+5. Go to [http://localhost:3000/](http://localhost:3000/)
+
+# 3. Testing
+
+## 3.1. Testing with `rspec`
+
+`rspec` is a unit testing gem for Ruby. It should be automatically installed upon running `bundle install`.
+
+To run specs (unit tests), simply run the following:
+
+```shell
+$ rspec
 ```
-$ cd Ingredient-Sharer/
-$ bundle install
-$ rails server
+
+To run specs and display each spec, run the following command:
+
+```shell
+$ rspec spec --format documentation
 ```
 
-5. Go to http://localhost:3000/
+## 3.2. Testing with `Capybara`
 
-## Issues
+TODO add contents
 
+## 3.3. Code coverage
+
+Code coverage is handled using `simplecov`. Upon running `rspec`, simplecov will automatically generate coverage data in `/coverage/` folder.
+
+
+## 4. Issues/Notes
+
+Issues are tracked in the repository's backlog.

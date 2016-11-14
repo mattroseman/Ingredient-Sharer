@@ -51,11 +51,13 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.5'
 end
 
-# Access an IRB console on exception pages or by using <%= console %> in views
-# only in development mode
-gem 'web-console', '~> 2.0', group: :development
-
 # devise
 gem 'devise'
 gem 'devise_security_extension'
 gem 'rails_email_validator'
+
+# simplecov for code coverage
+gem 'simplecov', :require => false, :group => :test
+
+# capybara for acceptance test
+gem 'capybara'

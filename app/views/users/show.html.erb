@@ -1,0 +1,33 @@
+<% @posts = Post.all %>
+<div class="post_fields">
+  <table width="900">
+    <caption align="top" style="font-size: 200%; font-style: bold;">Listing <%= @user.username %>'s Posts</caption>
+    <thead>
+    <tr>
+      <th width="60">Type</th>
+      <th>Title</th>
+      <th width="120">Location</th>
+      <th width="120">Posted time</th>
+      <th width="120">Delete at</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <% @posts.each do |post| %>
+        <% if post.user_id != @user.id %>
+            <% next %>
+        <% end %>
+
+        <tr>
+          <td><%= post.is_request ? 'Request' : 'Offer' %></td>
+          <td><%= link_to post.title, post %></td>
+          <td><%= post.location %></td>
+          <td><%= l post.created_at.to_time, format: :short %></td>
+          <td><%= l (post.created_at + post.ttl.hours).to_time, format: :short %></td>
+          <td></td>
+        </tr>
+    <% end %>
+    </tbody>
+  </table>
+
+</div>
