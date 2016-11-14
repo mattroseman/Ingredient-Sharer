@@ -18,13 +18,13 @@ body {
     background-image: url('https://source.unsplash.com/category/food');
     background-size: cover;
     min-height: 100vh;
-    align-items: center;
     flex-direction: column;
     display: -webkit-flex;
     -webkit-flex-direction: column;
-    margin: 0px
+    margin: 0;
     padding: 0;
     font-family: 'Source Sans Pro', sans-serif;
+    align-items: center;
 }
 
 h1 {
@@ -42,12 +42,9 @@ h2 {
 }
 
 div {
-    min-width: 800px;
-    display: block;
+    width: 900px;
     background-color: rgba(255, 255, 255, 0.7);
-    padding: 1rem;
     font-family: 'Source Sans Pro', sans-serif;
-    align-items: center;
 }
 
 div th, div td {
@@ -57,14 +54,25 @@ div th, div td {
 }
 
 div#header {
+    max-width: 100%;
     text-align: right;
     padding: 0;
     background-color: rgba(255, 255, 255, 0.95);
-    height: 25px;
+    height: 30px;
     border: 1px solid #CCC;
     width: 100%;
     margin: 0px auto;
     font-size: 130%;
+    float: right;
+}
+
+div#header th, div#header td {
+    text-align: right; font-family: 'Source Sans Pro', sans-serif; font-size: 130%; vertical-align: top;
+}
+
+div#logo {
+    margin: 0 auto;
+    width: 100px;
 }
 
 div#notice {
@@ -89,7 +97,7 @@ div#post_fields {
 }
 
 div#post_title {
-    max-width: 800px;
+    width: 900px;
     background-color: rgba(255, 255, 255, 0.7);
     color: #181818;
     font-family: 'Source Sans Pro', sans-serif;
