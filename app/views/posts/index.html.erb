@@ -1,9 +1,9 @@
 <p id="notice"><%= notice %></p>
 
 <div class="post_fields">
-<table width="900">
-  <caption align="top" style="font-size: 175%; font-style: bold;">Listing Posts</caption>
-  <thead>
+  <table width="900">
+    <caption align="top" style="font-size: 175%; font-style: bold;">Listing Posts</caption>
+    <thead>
     <tr>
       <th width="60">Type</th>
       <th>Title</th>
@@ -12,24 +12,30 @@
       <th width="120">Posted time</th>
       <th width="120">Delete at</th>
     </tr>
-  </thead>
+    </thead>
 
-  <tbody>
+    <tbody>
     <% @posts.each do |post| %>
-      <% if Time.now > (post.created_at + post.ttl.hours).to_time %>
-          <% next %>
-      <% end %>
-      <tr>
-        <td><%= post.is_request ? 'Request' : 'Offer' %></td>
-        <td><%= link_to post.title, post %></td>
-        <td><%= post.location %></td>
-        <th><%= link_to User.find(post.user_id).username, users_url(post.user_id) %></th>
-        <td><%= l post.created_at.to_time, format: :short %></td>
-        <td><%= l (post.created_at + post.ttl.hours).to_time, format: :short %></td>
-        <td></td>
-      </tr>
+        <% if Time.now > (post.created_at + post.ttl.hours).to_time %>
+            <% next %>
+        <% end %>
+        <tr>
+          <td><%= post.is_request ? 'Request' : 'Offer' %></td>
+          <td>
+            <% if post.comments.count > 1 %>
+                <%= link_to post.title + " [#{post.comments.count}]", post %>
+            <% else %>
+                <%= link_to post.title, post %>
+            <% end %>
+          </td>
+          <td><%= post.location %></td>
+          <th><%= link_to User.find(post.user_id).username, user_url(post.user_id) %></th>
+          <td><%= l post.created_at.to_time, format: :short %></td>
+          <td><%= l (post.created_at + post.ttl.hours).to_time, format: :short %></td>
+          <td></td>
+        </tr>
     <% end %>
-  </tbody>
-</table>
+    </tbody>
+  </table>
 
-<p align="right"><%= link_to 'New Post', new_post_path %></p>
+  <p align="right"><%= link_to 'New Post', new_post_path %></p>
