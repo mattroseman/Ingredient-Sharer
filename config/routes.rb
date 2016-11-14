@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
   resources :comments
-  resources :comments
   match '/users',   to: 'users#index',   via: 'get'
-  match '/users/:id',     to: 'users#show',       via: 'get'
+  match '/users/:id' => 'users#show', via: :get
   match '/users/edit', to: 'users#edit', via: 'get'
 
   devise_for :users, :path_prefix => 'd'
