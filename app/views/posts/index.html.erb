@@ -2,7 +2,7 @@
 
 <div class="post_fields">
 <table width="900">
-  <caption align="top" style="font-size: 200%; font-style: bold;">Listing Posts</caption>
+  <caption align="top" style="font-size: 175%; font-style: bold;">Listing Posts</caption>
   <thead>
     <tr>
       <th width="60">Type</th>
@@ -23,7 +23,7 @@
         <td><%= post.is_request ? 'Request' : 'Offer' %></td>
         <td><%= link_to post.title, post %></td>
         <td><%= post.location %></td>
-        <th><%= User.find(post.user_id).username %></th>
+        <th><%= link_to User.find(post.user_id).username, users_url(post.user_id) %></th>
         <td><%= l post.created_at.to_time, format: :short %></td>
         <td><%= l (post.created_at + post.ttl.hours).to_time, format: :short %></td>
         <td></td>

@@ -6,11 +6,25 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
 </head>
 <body>
-
 <% if user_signed_in? %>
-    <div id="header">Logged in as <%= link_to current_user.username, current_user %> (<%= link_to 'edit', edit_user_registration_url %>) | <%= link_to('Sign out', destroy_user_session_path, :method => :delete) %></div>
+    <div id="header">
+      <table align="center" width="100%">
+        <tr>
+        <td width="56%" style="text-align: right; vertical-align: center; font-family: Pacifico, Sans-Serif; font-size: 125%;">
+          <%= link_to "Ingredient Sharer", authenticated_root_path %>
+        </td>
+        <td>
+          Logged in as <%= link_to current_user.username, current_user %>
+          (<%= link_to 'edit', edit_user_registration_path %>)
+          | <%= link_to('Sign out', destroy_user_session_path, :method => :delete) %>
+        </td>
+        </tr>
+      </table>
+
+      </div>
 <% end %>
 <% if !alert.nil? %>
     <div id="notice"><%= alert %></div>
