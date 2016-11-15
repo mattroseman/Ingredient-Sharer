@@ -1,5 +1,10 @@
 <p id="notice"><%= notice %></p>
-<div id="post_title"><%= @post.is_request ? "[Request]" : "[Offer]" %> <%= @post.title %></div>
+<div id="post_title"><%= @post.is_request ? "[Request]" : "[Offer]" %>
+  <% if @post.comments.count > 1 %>
+      <%= @post.title + " [#{@post.comments.count}]" %>
+  <% else %>
+      <%= @post.title %>
+  <% end %></div>
 <div id="post_fields">
   <%= @post.content %>
   <br>

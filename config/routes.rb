@@ -7,9 +7,6 @@ Rails.application.routes.draw do
   devise_for :users, :path_prefix => 'd'
   resources :users, :only =>[:show]
 
-  devise_for :admins
-  resources :posts
-
   #post-comment relationship
   resources :posts do
     resources :comments
