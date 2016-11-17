@@ -52,6 +52,10 @@ group :development, :test do
 
   # a specific type or rspec (rspec-rails) is needed
   gem 'rspec-rails', '~> 3.5'
+
+  # FactoryGirl gem lets you create an object, or a collection of objects, with predefined sets of values
+  # for rspec testing
+  gem "factory_girl_rails"
 end
 
 # devise

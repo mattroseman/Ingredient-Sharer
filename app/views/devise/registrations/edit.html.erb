@@ -1,5 +1,5 @@
-
-<div class="login-container">
+<%= devise_error_messages! %>
+<div class="post_fields">
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {method: :put}) do |f| %>
       <%= devise_error_messages! %>
       <h2 align="center">Edit <%= resource_name.to_s.humanize %></h2>
@@ -20,7 +20,7 @@
 
       <p>
       <h3><%= f.label :location %></h3>
-      <%= f.text_field :location, required: true %>
+      <%= f.text_field :location, required: true, value: current_user.location %>
       <em>(You can still change your location for each post)</em>
       </p>
 
@@ -32,7 +32,7 @@
           <em><%= @minimum_password_length %> characters minimum, include at least one lowercase letter, one uppercase
             letter, and one digit)</em>
       <% end %>
-      <br>
+
       <h3><%= f.label :password_confirmation %></h3>
       <%= f.password_field :password_confirmation, autocomplete: "off" %>
       </p>
@@ -44,6 +44,8 @@
 
       <p>
         <%= button_to 'Back', :back %>
+      </p>
+      <p>
         <%= f.submit 'Update' %>
       </p>
 

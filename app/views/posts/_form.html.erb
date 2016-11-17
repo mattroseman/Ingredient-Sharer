@@ -1,3 +1,5 @@
+
+
 <%= form_for(@post) do |f| %>
     <% if @post.errors.any? %>
         <div id="error_explanation">
@@ -12,6 +14,11 @@
     <% end %>
 
     <div id="post_fields">
+      <% if !@post.persisted? %>
+          <h2 align="center">Create Post</h2>
+      <% else %>
+          <h2 align="center">Edit Post</h2>
+      <% end %>
       <%= f.select :is_request, [['Request', true], ['Offer', false]] %><br>
       <br>
       <%= f.label :title %><br>
@@ -20,7 +27,7 @@
       <%= f.text_area :content, style: 'width: 100%; min-height: 300px; display: block', required: true %><Br>
       <% if !@post.persisted? %>
           <%= f.label :location %><br>
-          <%= f.text_field :location, style: 'width: 100%; display: block', required: true, :value => current_user.location %>
+          <%= f.text_field :location, style: 'width: 100%; display: block', required: true, value: current_user.location %>
           <br>
           Time-to-live (in hours) of this post<br>
           <%= f.number_field :ttl, style: 'width: 50px; display: block', required: true %><br>
