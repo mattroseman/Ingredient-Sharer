@@ -1,3 +1,5 @@
+
+
 <%= form_for(@post) do |f| %>
     <% if @post.errors.any? %>
         <div id="error_explanation">
@@ -12,6 +14,11 @@
     <% end %>
 
     <div id="post_fields">
+      <% if !@post.persisted? %>
+          <h2 align="center">Create Post</h2>
+      <% else %>
+          <h2 align="center">Edit Post</h2>
+      <% end %>
       <%= f.select :is_request, [['Request', true], ['Offer', false]] %><br>
       <br>
       <%= f.label :title %><br>

@@ -1,14 +1,16 @@
-<p id="notice"><%= notice %></p>
-<div id="post_title"><%= @post.is_request ? "[Request]" : "[Offer]" %>
-  <% if @post.comments.count > 1 %>
-      <%= @post.title + " [#{@post.comments.count}]" %>
-  <% else %>
-      <%= @post.title %>
-  <% end %></div>
 <div id="post_fields">
-  <%= @post.content %>
-  <br>
+  <h2 align="center">
+    <%= @post.is_request ? "[Request]" : "[Offer]" %>
+    <% if @post.comments.count > 1 %>
+        <%= @post.title + " [#{@post.comments.count}]" %>
+    <% else %>
+        <%= @post.title %>
+    <% end %>
+  </h2>
   <p>
+    <%= @post.content %>
+    <br>
+    <br>
     <strong>Location:</strong>
     <%= @post.location %><br>
     <strong>Created by:</strong>
@@ -18,30 +20,28 @@
     <strong>Delete at:</strong>
     <%= l (@post.created_at + @post.ttl.hours).to_time, format: :short %><br>
   </p>
-
-  <h5 align="center">Comments</h5>
+  <h3>Comments</h3>
   <p>
     <% @post.comments.each do |comment| %>
         <% if comment.user_id == current_user.id %>
-            <%= link_to 'x', [comment.post, comment], method: :delete, data: { confirm: 'Are you sure?' }%>
+            <%= link_to 'x', [comment.post, comment], method: :delete, data: {confirm: 'Are you sure?'} %>
         <% end %>
-        <strong><%= User.find(comment.user_id).username %></strong>(<%= l comment.created_at.to_time, format: :short %>): <%= comment.content %><br/>
+        <strong><%= User.find(comment.user_id).username %></strong>(<%= l comment.created_at.to_time, format: :short %>
+        ): <%= comment.content %><br/>
     <% end %>
-  </p>
-
-  <p>Add a comment:<br/>
+    <h3>Add a comment:</h3>
     <%= form_for([@post, @post.comments.build]) do |f| %>
         <%= f.hidden_field :user_id, :value => current_user.id %>
          <%= f.text_area :content, style: 'width: 750px; resize: vertical' %>
             <%= f.submit %>
     <% end %>
-  </p>
+    </p>
 
-  <p align="center">
-    <% if current_user.id == @post.user_id %>
-      <%= link_to 'Edit', edit_post_path(@post) %> |
-    <% end %>
+    <p align="center">
+      <% if current_user.id == @post.user_id %>
+          <%= link_to 'Edit', edit_post_path(@post) %> |
+      <% end %>
       <%= link_to 'Back', posts_path %>
-  </p>
+    </p>
 
-</div>
+    </div>
