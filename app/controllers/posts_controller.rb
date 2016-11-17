@@ -27,6 +27,24 @@ class PostsController < ApplicationController
   # POST /posts
   # POST /posts.json
   def create
+    # update markov model
+    # TODO break this out into a helper function
+    word_list = post_params[:content].split
+    prev_word = ""
+    word_list.each do |word|
+      word = word.gsub(/[^0-9A-Za-z']/, '')
+      begin
+        # check to see if the markov state already exists
+        markov_state = MarkovModel.find [prev_word, word]
+        # if it does exist increase count by one
+        markov_state.increment! :count
+      rescue ActiveRecord::RecordNotFound
+        # if it doesn't exist then create a row for this markov state
+        MarkovModel.create word: prev_word, next_word: word, count: 1
+      end
+      prev_word = word
+    end
+
     @post = Post.new(post_params)
     @post.user_id = current_user.id
 
@@ -44,6 +62,24 @@ class PostsController < ApplicationController
   # PATCH/PUT /posts/1
   # PATCH/PUT /posts/1.json
   def update
+    # update markov model
+    # TODO break this out into a helper function
+    word_list = post_params[:content].split
+    prev_word = ""
+    word_list.each do |word|
+      word = word.gsub(/[^0-9A-Za-z']/, '')
+      begin
+        # check to see if the markov state already exists
+        markov_state = MarkovModel.find [prev_word, word]
+        # if it does exist increase count by one
+        markov_state.increment! :count
+      rescue ActiveRecord::RecordNotFound
+        # if it doesn't exist then create a row for this markov state
+        MarkovModel.create word: prev_word, next_word: word, count: 1
+      end
+      prev_word = word
+    end
+
     respond_to do |format|
       if @post.update(post_params)
         format.html { redirect_to @post, notice: 'Post was successfully updated.' }
