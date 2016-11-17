@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161114233559) do
+ActiveRecord::Schema.define(version: 20161117140041) do
 
   create_table "comments", force: :cascade do |t|
     t.integer  "user_id",    limit: 4
@@ -23,6 +23,12 @@ ActiveRecord::Schema.define(version: 20161114233559) do
 
   add_index "comments", ["post_id"], name: "index_comments_on_post_id", using: :btree
   add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
+
+  create_table "markov_models", id: false, force: :cascade do |t|
+    t.string  "word",      limit: 255,             null: false
+    t.string  "next_word", limit: 255,             null: false
+    t.integer "count",     limit: 4,   default: 1, null: false
+  end
 
   create_table "posts", force: :cascade do |t|
     t.string   "title",      limit: 255
