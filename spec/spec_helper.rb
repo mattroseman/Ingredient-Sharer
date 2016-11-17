@@ -1,6 +1,9 @@
 # for Capybara w/ RSpec
 require 'capybara/rspec'
 
+# for FactoryGirl
+require 'factory_girl_rails'
+
 # for code coverage
 require 'simplecov'
 SimpleCov.start
