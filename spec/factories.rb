@@ -5,12 +5,14 @@ FactoryGirl.define do
     location  "Home"
     is_admin  false
   end
+  
+  factory :post do
+    trait :in_the_future do
+      delete_at { 2.days.from_now }
+    end
 
-  # This will use the User class (Admin would have been guessed)
-  factory :admin, class: User do
-    email     "admin@isa.app"
-    username  "admin"
-    location  "adminHome"
-    is_admin  true
+    trait :in_the_past do
+      delete_at { 2.days.ago }
+    end
   end
 end

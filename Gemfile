@@ -55,7 +55,7 @@ group :development, :test do
 
   # FactoryGirl gem lets you create an object, or a collection of objects, with predefined sets of values
   # for rspec testing
-  gem "factory_girl_rails"
+  gem "factory_girl_rails", "~> 4.0"
 end
 
 # devise
