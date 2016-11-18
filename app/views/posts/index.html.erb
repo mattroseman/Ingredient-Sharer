@@ -1,7 +1,11 @@
+<% @posts = Post.all.select do |post| (Time.now <= (post.created_at + post.ttl.hours).to_time) end %>
 <div class="post_fields">
   <h2 align="center">Listing Posts</h2>
   <table width="900">
     <thead>
+      <caption>
+        ↑↓
+      </caption>
     <tr>
       <th width="60">Type</th>
       <th>Title</th>
@@ -14,9 +18,6 @@
 
     <tbody>
     <% @posts.reverse_each do |post| %>
-        <% if Time.now > (post.created_at + post.ttl.hours).to_time %>
-            <% next %>
-        <% end %>
         <tr>
           <td><%= post.is_request ? 'Request' : 'Offer' %></td>
           <td>

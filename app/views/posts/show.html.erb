@@ -8,9 +8,6 @@
     <% end %>
   </h2>
   <p>
-    <%= @post.content %>
-    <br>
-    <br>
     <strong>Location:</strong>
     <%= @post.location %><br>
     <strong>Created by:</strong>
@@ -19,6 +16,9 @@
     <%= l @post.created_at.to_time, format: :short %><br>
     <strong>Delete at:</strong>
     <%= l (@post.created_at + @post.ttl.hours).to_time, format: :short %><br>
+  </p>
+  <p>
+    <%= @post.content %>
   </p>
   <h3>Comments</h3>
   <p>
