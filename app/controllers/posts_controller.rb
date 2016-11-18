@@ -6,8 +6,10 @@ class PostsController < ApplicationController
   def index
     # Show posts that are only alive
     # @posts = Post.all
-    @posts = Post.where('(created_at + ttl) > ?', Time.now)
+    @posts = Post.where('(created_at + ttl) > ?', Time.now).order("#{params[:sort_param]}")
+    @show_newest_first = true
   end
+  
 
   # GET /posts/1
   # GET /posts/1.json
@@ -91,6 +93,11 @@ class PostsController < ApplicationController
     end
   end
 
+  def reverse_view_order
+    @show_newest_first = !@show_newest_first
+  end
+
+
   # DELETE /posts/1
   # DELETE /posts/1.json
   def destroy
@@ -100,6 +107,7 @@ class PostsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
 
   private
     # Use callbacks to share common setup or constraints between actions.
