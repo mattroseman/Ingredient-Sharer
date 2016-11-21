@@ -44,7 +44,12 @@ class PostsController < ApplicationController
         # if it doesn't exist then create a row for this markov state
         MarkovModel.create word: prev_word, next_word: word, count: 1
       end
-      prev_word = word
+      # if this is the last word in a sentence
+      if /[.?!]$/.match(word)
+        prev_word = ""
+      else
+        prev_word = word
+      end
     end
 
     @post = Post.new(post_params)
@@ -69,17 +74,22 @@ class PostsController < ApplicationController
     word_list = post_params[:content].split
     prev_word = ""
     word_list.each do |word|
-      word = word.gsub(/[^0-9A-Za-z']/, '')
+      stripped_word = word.gsub(/[^0-9A-Za-z']/, '')
       begin
         # check to see if the markov state already exists
-        markov_state = MarkovModel.find [prev_word, word]
+        markov_state = MarkovModel.find [prev_word, stripped_word]
         # if it does exist increase count by one
         markov_state.increment! :count
       rescue ActiveRecord::RecordNotFound
         # if it doesn't exist then create a row for this markov state
-        MarkovModel.create word: prev_word, next_word: word, count: 1
+        MarkovModel.create word: prev_word, next_word: stripped_word, count: 1
       end
-      prev_word = word
+      # if this is the last word in a sentence
+      if /[.?!]/.match(word[-1])
+        prev_word = ""
+      else
+        prev_word = word
+      end
     end
 
     respond_to do |format|
