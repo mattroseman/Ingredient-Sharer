@@ -75,6 +75,24 @@ RSpec.describe User, :type => :model do
     ).save! }.to raise_error
   end
 
+  it 'should not allow whitespace in email' do
+    expect { User.create(
+        username: 'someguy',
+        email: 'some guy@gmail.com',
+        password: 'P@ssw0rd',
+        password_confirmation: 'P@ssw0rd'
+    ).save! }.to raise_error
+  end
+
+  it 'should not allow more than one @ in email' do
+    expect { User.create(
+        username: 'someguy',
+        email: 'some@guy@gmail.com',
+        password: 'P@ssw0rd',
+        password_confirmation: 'P@ssw0rd'
+    ).save! }.to raise_error
+  end
+
   it 'should be able to log in with email' do
     user = User.create(
         username: 'someguy',
