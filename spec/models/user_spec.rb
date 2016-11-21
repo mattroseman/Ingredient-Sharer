@@ -44,14 +44,14 @@ RSpec.describe User, :type => :model do
   it 'should reject a duplicate email' do
     user = User.create(
         username: 'someguy',
-        email: 'test@example.com',
+        email: 'someguy_test_duplicate_email@example.com',
         password: 'P@ssw0rd',
         password_confirmation: 'P@ssw0rd'
-    ).save!
+    )
 
     expect { same_email_user = User.create(
         username: 'otherguy',
-        email: 'test@example.com',
+        email: 'someguy_test_duplicate_email@example.com',
         password: 'someP4SSW0RD',
         password_confirmation: 'someP4SSW0RD'
     ).save! }.to raise_error
