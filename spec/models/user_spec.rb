@@ -31,7 +31,7 @@ RSpec.describe User, :type => :model do
         email: 'test@example.com',
         password: 'P@ssw0rd',
         password_confirmation: 'P@ssw0rd'
-    )
+    ).save
 
     expect { User.create(
         username: 'someguy',
