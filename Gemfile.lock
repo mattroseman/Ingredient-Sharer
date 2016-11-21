@@ -132,6 +132,8 @@ GEM
       rails-deprecated_sanitizer (>= 1.0.1)
     rails-html-sanitizer (1.0.3)
       loofah (~> 2.0)
+    rails-jquery-autocomplete (1.0.3)
+      rails (>= 3.2)
     rails_email_validator (0.1.4)
       activemodel (>= 3.0.0)
     railties (4.2.7.1)
@@ -223,6 +225,7 @@ DEPENDENCIES
   jquery-rails
   mysql2 (~> 0.3.18)
   rails (~> 4.2.3)
+  rails-jquery-autocomplete
   rails_email_validator
   rspec-rails (~> 3.5)
   sass-rails (~> 5.0)
