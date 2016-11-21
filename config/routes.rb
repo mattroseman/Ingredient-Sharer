@@ -7,9 +7,11 @@ Rails.application.routes.draw do
   devise_for :users, :path_prefix => 'd'
   resources :users, :only =>[:show]
 
-  #post-comment relationship
+  
   resources :posts do
+    # post-comment relationship
     resources :comments
+    
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

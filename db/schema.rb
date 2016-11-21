@@ -45,9 +45,9 @@ ActiveRecord::Schema.define(version: 20161117140041) do
   add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
   create_table "markov_models", id: false, force: :cascade do |t|
-    t.string  "word",      limit: 255,             null: false
-    t.string  "next_word", limit: 255,             null: false
-    t.integer "count",     limit: 4,   default: 1, null: false
+    t.string  "word",      limit: 255, default: "", null: false
+    t.string  "next_word", limit: 255, default: "", null: false
+    t.integer "count",     limit: 4,   default: 1,  null: false
   end
 
   create_table "posts", force: :cascade do |t|

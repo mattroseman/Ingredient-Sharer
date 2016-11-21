@@ -8,9 +8,6 @@
     <% end %>
   </h2>
   <p>
-    <%= @post.content %>
-    <br>
-    <br>
     <strong>Location:</strong>
     <%= @post.location %><br>
     <strong>Created by:</strong>
@@ -20,10 +17,13 @@
     <strong>Delete at:</strong>
     <%= l (@post.created_at + @post.ttl.hours).to_time, format: :short %><br>
   </p>
+  <p>
+    <%= @post.content %>
+  </p>
   <h3>Comments</h3>
   <p>
     <% @post.comments.each do |comment| %>
-        <% if comment.user_id == current_user.id %>
+        <% if comment.user_id == current_user.id || current_user.is_admin %>
             <%= link_to 'x', [comment.post, comment], method: :delete, data: {confirm: 'Are you sure?'} %>
         <% end %>
         <strong><%= User.find(comment.user_id).username %></strong>(<%= l comment.created_at.to_time, format: :short %>

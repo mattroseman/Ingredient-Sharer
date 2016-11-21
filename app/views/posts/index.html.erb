@@ -1,9 +1,19 @@
+<% @posts = Post.all.select do |post| (Time.now <= (post.created_at + post.ttl.hours).to_time) end %>
 <div class="post_fields">
   <h2 align="center">Listing Posts</h2>
+    <p align="right">
+      View order: 
+    <% if @show_newest_first %>
+      <% @posts = @posts.reverse %>
+      <strong><%= link_to 'Newest first', posts_path(:sort_param => "id DESC") %></strong> <%= link_to 'Oldest first', posts_path(:sort_param => "id ASC") %>
+    <% else %>
+      <%= link_to 'Newest first', posts_path(:sort_param => "id DESC") %>Newest first <strong><%= link_to 'Oldest first', posts_path(:sort_param => "id ASC") %></strong>
+    <% end %>
+    </p>
   <table width="900">
     <thead>
     <tr>
-      <th width="60">Type</th>
+      <th width="80">Type</th>
       <th>Title</th>
       <th width="120">Location</th>
       <th width="80">Created by</th>
@@ -13,14 +23,16 @@
     </thead>
 
     <tbody>
-    <% @posts.reverse_each do |post| %>
-        <% if Time.now > (post.created_at + post.ttl.hours).to_time %>
-            <% next %>
-        <% end %>
+    <% @posts.each do |post| %>
         <tr>
-          <td><%= post.is_request ? 'Request' : 'Offer' %></td>
           <td>
-            <% if post.comments.count > 1 %>
+            <% if post.user_id == current_user.id || current_user.is_admin %>
+              <%= link_to 'x', post, method: :delete, data: {confirm: 'Are you sure?'} %>
+            <% end %>
+            <%= post.is_request ? 'Request' : 'Offer' %>
+          </td>
+          <td>
+            <% if post.comments.count > 0 %>
                 <%= link_to post.title + " [#{post.comments.count}]", post %>
             <% else %>
                 <%= link_to post.title, post %>
