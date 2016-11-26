@@ -11,7 +11,7 @@ class CommentsController < ApplicationController
       redirect_to :back
     else
       flash[:alert] = "Please check the comment form."
-      render root_path
+      redirect_to post_path(@post)
     end
   end
 
