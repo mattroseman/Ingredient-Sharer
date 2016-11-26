@@ -26,8 +26,7 @@
         <% if comment.user_id == current_user.id || current_user.is_admin %>
             <%= link_to 'x', [comment.post, comment], method: :delete, data: {confirm: 'Are you sure?'} %>
         <% end %>
-        <strong><%= User.find(comment.user_id).username %></strong>(<%= l comment.created_at.to_time, format: :short %>
-        ): <%= comment.content %><br/>
+        <strong><%= User.find(comment.user_id).username %></strong> (<%= l comment.created_at.to_time, format: :short %>): <%= comment.content %><br/>
     <% end %>
     <h3>Add a comment:</h3>
     <%= form_for([@post, @post.comments.build]) do |f| %>
