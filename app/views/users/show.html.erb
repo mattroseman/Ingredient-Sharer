@@ -2,12 +2,20 @@
 <div class="post_fields">
   <h2 align="center">Listing <%= @user.username %>'s Posts</h2>
   <p>
-    <%= @user.username %> has been member since <%= l @user.created_at.to_date, format: :short %>.
+    <%= @user.username %> has been member since <%= l @user.created_at.to_date, format: :short %>
+    <% if @user.is_admin %>and is an admin. <% end %>
+    <% if @user != current_user %>
+      <% if @user.is_admin %>
+        <%= link_to 'demote to normal user', { :controller => 'users', :action => 'demote', :id => @user.id }, data: { confirm: 'Do you really want to revoke ' + @user.username + '\'s admin privileges?' } %>
+      <% else %>
+        <%= link_to 'promote to admin user', { :controller => 'users', :action => 'promote', :id => @user.id, }, data: { confirm: 'Do you really want to give ' + @user.username + ' admin privileges?' }  %>
+      <% end %>
+    <% end %>
   </p>
   <table width="900">
     <thead>
     <tr>
-      <th width="60">Type</th>
+      <th width="80">Type</th>
       <th>Title</th>
       <th width="120">Location</th>
       <th width="120">Posted time</th>
@@ -18,7 +26,11 @@
     <tbody>
     <% @posts.each do |post| %>
         <tr>
-          <td><%= post.is_request ? 'Request' : 'Offer' %></td>
+          <td>
+            <% if current_user.is_admin %>
+              <%= link_to 'x', post, method: :delete, data: { confirm: 'Are you sure?' } %>
+            <% end %>
+            <%= post.is_request ? 'Request' : 'Offer' %></td>
           <td><%= link_to post.title, post %></td>
           <td><%= post.location %></td>
           <td><%= l post.created_at.to_time, format: :short %></td>

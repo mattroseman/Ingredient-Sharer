@@ -1,17 +1,17 @@
 Rails.application.routes.draw do
   resources :comments
-  match '/users',   to: 'users#index',   via: 'get'
-  match '/users/:id' => 'users#show', via: :get
-  match '/users/edit', to: 'users#edit', via: 'get'
+  match '/users',      to: 'users#index', via: 'get'
+  match '/users/:id',  to: 'users#show',  via: 'get'
+  match '/users/edit', to: 'users#edit',  via: 'get'
+  match '/users/promote/:id',  to: 'users#promote',  via: 'get'
+  match '/users/demote/:id',  to: 'users#demote',  via: 'get'
 
   devise_for :users, :path_prefix => 'd'
   resources :users, :only =>[:show]
 
-  
   resources :posts do
     # post-comment relationship
     resources :comments
-    
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
