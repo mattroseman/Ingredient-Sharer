@@ -1,18 +1,38 @@
 Rails.application.routes.draw do
-  resources :comments
+
+  # misc. static pages
+  get 'about/index'
+  get 'welcome/index'
+
+  # differentiate devise user view and user profile view
+  devise_for :users, :path_prefix => 'd'
+  resources :users, :only =>[:show]
+  devise_scope :user do
+    authenticated :user do
+      # Once we are done making the posts scaffold:
+      # root :to => 'posts#index', as: :authenticated_root
+      root :to => 'welcome#index', as: :authenticated_root
+    end
+      root :to => 'welcome#index', as: :unauthenticated_root
+  end
+
+  # root routes
+  root 'welcome#index'
+
+  # post-comment relationship
+  resources :posts do
+    resources :comments
+  end
+
+  # user-related stuff
   match '/users',      to: 'users#index', via: 'get'
   match '/users/:id',  to: 'users#show',  via: 'get'
   match '/users/edit', to: 'users#edit',  via: 'get'
   match '/users/promote/:id',  to: 'users#promote',  via: 'get'
   match '/users/demote/:id',  to: 'users#demote',  via: 'get'
 
-  devise_for :users, :path_prefix => 'd'
-  resources :users, :only =>[:show]
+  
 
-  resources :posts do
-    # post-comment relationship
-    resources :comments
-  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -21,15 +41,6 @@ Rails.application.routes.draw do
 
   # devise_for :users
   # get '/users/edit', :to => 'devise/registrations#edit', :as => :user
-
-  devise_scope :user do
-    authenticated :user do
-      root :to => 'posts#index', as: :authenticated_root
-    end
-    unauthenticated :user do
-      root :to => 'devise/sessions#new', as: :unauthenticated_root
-    end
-  end
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
