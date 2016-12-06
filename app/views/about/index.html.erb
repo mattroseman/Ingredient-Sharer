@@ -1,0 +1,97 @@
+
+</div>
+<head>
+	<style>
+		body {
+			padding-top: 0;
+			margin: 0;
+			font-family: 'Source Sans Pro', sans-serif;
+		}
+		.scene {
+			height: 100vh;
+			display: block;
+			background-attachment: fixed;
+			background-size: cover;
+		}
+		.scene h1 {
+			margin: 0;
+			font-size: 2rem;
+		}
+		.scene h1:after {
+			content: '';
+			border-bottom: 1px solid white;
+			display: block;
+			width: 8rem;
+			margin: 0.7rem auto;
+			font-weight: 200;
+		}
+		.scene header {
+			color: white;
+			max-width: 80%;
+			position: relative;
+			top: 50%;
+			left: 50%;
+			transform: translateX(-50%) translateY(-50%);
+			text-align: center;
+			font-weight: 200;
+		}
+		.scene.one {
+			background-image:url(https://source.unsplash.com/category/nature);
+		}
+		.scene.two {
+			background-image:url(https://source.unsplash.com/category/buildings);
+		}
+		.scene.three {
+			background-image:url(https://source.unsplash.com/category/food);
+		}
+		.scene.four {
+			background-image:url(https://source.unsplash.com/category/technology);
+		}
+		.scene.five {
+			background-image:url(https://source.unsplash.com/category/people);
+		}
+	</style>
+</head>
+<div id="intro">
+	<section class="scene one">
+		<header>
+			<h1>
+				Ingredient Sharer
+			</h1>
+			Connect with your neighbors via leftover groceries and spare ingredients.
+		</header>
+	</section>
+	<section class="scene two">
+		<header>
+			<h1>
+				Sign up using your email
+			</h1>
+			You can set up your username and also use that to log in.
+		</header>
+	</section>
+	<section class="scene three">
+		<header>
+			<h1>
+				Post your request/offer
+			</h1>
+			Set up your post's time-to-live in hours (up to 24 hours) so you know when you would like to keep the post alive.
+		</header>
+	</section>
+	<section class="scene four">
+		<header>
+			<h1>
+				Connect with your neighbors
+			</h1>
+			Communicate with your neighbor to exchange your food ingredient.<br>
+			Much Love. Such Community. Very Happy.
+		</header>
+	</section>
+	<section class="scene five">
+		<header>
+			<h1>
+				Connect now
+			</h1>
+			<%= link_to "Click here to sign up for a membership", new_user_registration_path, :style => "color: #FFF; text-decoration: underline" %>.
+		</header>
+	</section>
+</div>
