@@ -70,3 +70,9 @@ gem 'simplecov', :require => false, :group => :test
 
 # capybara for acceptance test
 gem 'capybara'
+
+#  dotenv loads environment variables (used with recaptcha)
+gem 'dotenv-rails', :groups => [:development, :test]
+
+# recaptcha for catching bots
+gem 'recaptcha', require: 'recaptcha/rails'

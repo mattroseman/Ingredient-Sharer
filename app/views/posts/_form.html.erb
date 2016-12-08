@@ -31,6 +31,7 @@
           <br>
           Time-to-live (in hours) of this post<br>
           <%= f.number_field :ttl, style: 'width: 50px; display: block', required: true %><br>
+          <%= recaptcha_tags %>
           <%= f.hidden_field :user_id, :value => current_user.id %>
 
       <% end %>
