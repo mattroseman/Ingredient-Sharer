@@ -51,33 +51,31 @@ class PostsController < ApplicationController
           prev_word = word
         end
     end
-    # scale bad pairs to total pair count
-    if bad_pair_count/total_pair_count > 0.10
-    end
 
-    if verify_recaptcha
+    # if less than .20 bad word pairs are considered bad or the captcha is verified
+    if bad_pair_count/total_pair_count < 0.20 || verify_recaptcha
         # update markov model
         # TODO break this out into a helper function
         #word_list = post_params[:content].split
         #prev_word = ""
-        word_list.each do |word|
-          word = word.gsub(/[^0-9A-Za-z']/, '')
-          begin
-            # check to see if the markov state already exists
-            markov_state = MarkovModel.find [prev_word, word]
-            # if it does exist increase count by one
-            markov_state.increment! :count
-          rescue ActiveRecord::RecordNotFound
-            # if it doesn't exist then create a row for this markov state
-            MarkovModel.create word: prev_word, next_word: word, count: 1
-          end
-          # if this is the last word in a sentence
-          if /[.?!]$/.match(word)
-            prev_word = ""
-          else
-            prev_word = word
-          end
-        end
+        #word_list.each do |word|
+        #  word = word.gsub(/[^0-9A-Za-z']/, '')
+        #  begin
+        #    # check to see if the markov state already exists
+        #    markov_state = MarkovModel.find [prev_word, word]
+        #    # if it does exist increase count by one
+        #    markov_state.increment! :count
+        #  rescue ActiveRecord::RecordNotFound
+        #    # if it doesn't exist then create a row for this markov state
+        #    MarkovModel.create word: prev_word, next_word: word, count: 1
+        #  end
+        #  # if this is the last word in a sentence
+        #  if /[.?!]$/.match(word)
+        #    prev_word = ""
+        #  else
+        #    prev_word = word
+        #  end
+        #end
 
         @post = Post.new(post_params)
         @post.user_id = current_user.id
@@ -95,7 +93,7 @@ class PostsController < ApplicationController
         @post = Post.new(post_params)
         @post.user_id = current_user.id
         respond_to do |format|
-            format.html { render :new }
+            format.html { render :new_captcha }
             format.json { render json: 'pleas complete reCaptcha correctly' }
         end
     end
