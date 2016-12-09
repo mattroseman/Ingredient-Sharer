@@ -1,9 +1,9 @@
-<!doctype html>
-<html>
+
+</div>
 <head>
-	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300" rel="stylesheet">
 	<style>
 		body {
+			padding-top: 0;
 			margin: 0;
 			font-family: 'Source Sans Pro', sans-serif;
 		}
@@ -52,7 +52,7 @@
 		}
 	</style>
 </head>
-<body>
+<div id="intro">
 	<section class="scene one">
 		<header>
 			<h1>
@@ -91,9 +91,7 @@
 			<h1>
 				Connect now
 			</h1>
-			<a href="d/users/sign_up" style="color: #FFF; text-decoration: underline">Click here to sign up for a membership</a>.
+			<%= link_to "Click here to sign up for a membership", new_user_registration_path, :style => "color: #FFF; text-decoration: underline" %>.
 		</header>
 	</section>
-</body>
-
-</html>
+</div>

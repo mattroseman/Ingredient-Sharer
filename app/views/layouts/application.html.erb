@@ -1,37 +1,87 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>IngredientSharer</title>
+  <title>Ingredient Sharer</title>
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
-  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+  <!-- Font awesome icons! -->
+  <script src="https://use.fontawesome.com/54af6df893.js"></script>
+
 </head>
 <body>
-<% if user_signed_in? %>
-    <div id="header">
-      <table align="center" width="100%">
-        <tr>
-        <td width="55%" style="text-align: right; vertical-align: center; font-family: Pacifico, Sans-Serif; font-size: 125%;">
-          <%= link_to "Ingredient Sharer", authenticated_root_path %>
-        </td>
-        <td>
-          Logged in as <%= link_to current_user.username, current_user %>
-          (<%= link_to 'edit', edit_user_registration_path %>)
-          | <%= link_to('Sign out', destroy_user_session_path, :method => :delete) %>
-        </td>
-        </tr>
-      </table>
 
+  <!-- Bootstrap Navbar -->
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/"><i class="fa fa-cutlery" aria-hidden="true"></i> Ingredient Sharer</a>
       </div>
-<% end %>
-<% if !alert.nil? %>
-    <div id="alert"><%= alert %></div>
-<% end %>
-<% if !notice.nil? %>
-    <div id="notice"><%= notice %></div>
-<% end %>
-<%= yield %>
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <li><%= link_to "About", about_index_path %></li>
+    </ul>
+    <% if user_signed_in? %>
+    <form class="navbar-form navbar-right">
+      <div class="form-group">
+        <input type="text" class="form-control" placeholder="Search..">
+      </div>
+<<<<<<< HEAD
+      <button type="submit" class="btn btn-default">Submit</button>
+    </form>
+    <% end %>
+    <ul class="nav navbar-nav navbar-right">
+      <% if user_signed_in? %>
+      <li>
+        <%= link_to new_post_path do %>
+        <i class="fa fa-pencil" aria-hidden="true"></i>
+        <% end %>
+      </li>
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= current_user.username %> <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><%= link_to 'My Posts', current_user %></li>
+          <li><%= link_to 'Change Information', edit_user_registration_path %></li>
+          <li role="separator" class="divider"></li>
+          <li><%= link_to 'Sign out', destroy_user_session_path, :method => :delete %></li>
+        </ul>
+      </li>
+      <% if current_user.is_admin? %>
+      <li><%= link_to 'Admin', users_path %></li>
+      <% end %>
+      <% else %>
+      <li><%= link_to 'Sign in', new_user_session_path %></li>
+      <% end %>
+    </ul>
+  </div><!-- /.navbar-collapse -->
+</div><!-- /.container-fluid -->
+</nav>
+
+<div class="container">
+  <% if !alert.nil? %>
+  <div id="notice"><%= alert %></div>
+  <% end %>
+  <% if !notice.nil? %>
+  <div id="notice"><%= notice %></div>
+  <% end %>
+  <%= yield %>
+</div>
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 </body>
 </html>

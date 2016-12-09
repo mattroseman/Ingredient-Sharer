@@ -1,5 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Comment, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it 'creates comment successfully (nominal case) with valid input' do
+    comment = Comment.create
+  end
 end
