@@ -1,5 +1,4 @@
 <% @posts = Post.all.select do |post| (Time.now <= (post.created_at + post.ttl.hours).to_time) end %>
-<div class="post_fields">
   <h2 align="center">Listing Posts</h2>
     <p align="right">
       View order: 
@@ -10,13 +9,15 @@
       <%= link_to 'Newest first', posts_path(:sort_param => "id DESC") %>Newest first <strong><%= link_to 'Oldest first', posts_path(:sort_param => "id ASC") %></strong>
     <% end %>
     </p>
-  <table width="900">
+    
+<div class="table-responsive">
+  <table class="table">
     <thead>
     <tr>
-      <th width="80">Type</th>
+      <th>Type</th>
       <th>Title</th>
-      <th width="120">Location</th>
-      <th width="80">Created by</th>
+      <th>Location</th>
+      <th>Created by</th>
       <th width="120">Posted time</th>
       <th width="120">Delete at</th>
     </tr>
