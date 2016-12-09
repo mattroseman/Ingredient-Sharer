@@ -30,8 +30,8 @@ class PostsController < ApplicationController
     word_list = post_params[:content].split
     prev_word = ""
     #probability = 1
-    bad_pair_count = 0
-    total_pair_count = word_list.length + 1
+    bad_pair_count = 0.0
+    total_pair_count = word_list.length + 1.0
     word_list.each do |word|
         word = word.gsub(/[^0-9A-Za-z']/, '')
         begin
@@ -53,7 +53,7 @@ class PostsController < ApplicationController
     end
 
     # if less than .20 bad word pairs are considered bad or the captcha is verified
-    if bad_pair_count/total_pair_count < 0.20 || verify_recaptcha
+    if bad_pair_count/total_pair_count < 0.50 || verify_recaptcha
         # update markov model
         # TODO break this out into a helper function
         #word_list = post_params[:content].split
