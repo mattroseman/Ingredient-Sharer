@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     authenticated :user do
       # Once we are done making the posts scaffold:
       # root :to => 'posts#index', as: :authenticated_root
-      root :to => 'welcome#index', as: :authenticated_root
+      root :to => 'posts#index', as: :authenticated_root
     end
       root :to => 'welcome#index', as: :unauthenticated_root
   end
