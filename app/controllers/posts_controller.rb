@@ -27,11 +27,39 @@ class PostsController < ApplicationController
   # POST /posts
   # POST /posts.json
   def create
+    word_list = post_params[:content].split
+    prev_word = ""
+    #probability = 1
+    bad_pair_count = 0
+    total_pair_count = word_list.length + 1
+    word_list.each do |word|
+        word = word.gsub(/[^0-9A-Za-z']/, '')
+        begin
+            # get the count of this word pair
+            markov_state = MarkovModel.find [prev_word, word]
+            # divide by total count for pairs with prev_word as first word
+            probability = (markov_state.count.to_f / MarkovModel.where(word: prev_word).select(:count).map(&:count).inject(0, :+).to_f)
+            if probability > 0.01
+                bad_pair_count += 1
+            end
+            puts(probability)
+        rescue ActiveRecord::RecordNotFound
+        end
+        if /[.?!]$/.match(word)
+          prev_word = ""
+        else
+          prev_word = word
+        end
+    end
+    # scale bad pairs to total pair count
+    if bad_pair_count/total_pair_count > 0.10
+    end
+
     if verify_recaptcha
         # update markov model
         # TODO break this out into a helper function
-        word_list = post_params[:content].split
-        prev_word = ""
+        #word_list = post_params[:content].split
+        #prev_word = ""
         word_list.each do |word|
           word = word.gsub(/[^0-9A-Za-z']/, '')
           begin
