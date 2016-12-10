@@ -4,11 +4,21 @@ A web app for sharing ingredients with neighbors.
 ## 0. Index
 
 1. Requirements
-2. How to run
-3. Testing 
+2. Installation
+    - Installing dependencies for Ruby and rbenv
+    - Installing rbenv
+    - Setting up rbenv
+    - Cloning this repository
+    - Installing dependencies using Bundler
+    - rbenv rehash
+    - bundle install
+3. Running ISA
+    - Create & Migrate database using rake
+    - Run rails server
+4. Testing 
     - with `rspec`
     - Code Coverage
-4. Issues/Notes
+5. Issues/Notes
 
 # 1. Requirements
 
@@ -16,7 +26,7 @@ A web app for sharing ingredients with neighbors.
 - Node.js
 - MySQL
 
-# 2. How to run
+# 2. Installation
 
 The instructions for installing relevant dependencies and resources to run ISA is described below.
 
