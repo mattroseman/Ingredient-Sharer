@@ -22,9 +22,10 @@ A web app for sharing ingredients with neighbors.
 
 # 1. Requirements
 
-- Ruby (2.3.0)
-- Node.js
-- MySQL
+- Ubuntu 14.04 or higher
+- MySQL 14 or higher
+- Ruby 2.3.1 or higher
+- rbenv 1.0.0 or higher
 
 # 2. Installation
 
